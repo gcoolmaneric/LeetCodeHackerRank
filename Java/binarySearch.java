@@ -47,22 +47,20 @@ public class binarySearch {
      }
     
      //recursively 
-    public static int binarySearchFind2(int[] num, int target)
+    public static int binarySearchFind2(int[] num, int target, int start, int end)
     {
         if( num == null || num.length == 0) return -1;
 
-        int start = 0;
-        int end = num.length -1;
         while ( start < end )
         {
             int mid = ( start + end )  / 2;
             if(  num[mid] == target ) return mid;
-            else if ( num[mid] > target ) end = mid -1;
-            else if  ( num[mid] < target ) start = mid + 1;
+            else if ( num[mid] > target ) binarySearchFind2(num, target, start, mid-1);
+            else if  ( num[mid] < target ) binarySearchFind2(num, target, mid+1, end);
           
         }
-
         return -1;
+        
      }
      
     
